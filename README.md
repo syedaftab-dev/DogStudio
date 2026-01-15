@@ -1,1 +1,1 @@
-# DogStudio website 
+# DogStudio website
