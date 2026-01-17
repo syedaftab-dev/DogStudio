@@ -2,6 +2,7 @@ import React, { useEffect }  from 'react'
 import { Canvas, useThree } from '@react-three/fiber' // this will contain the 3js file renderer created
 import { OrbitControls, useGLTF, useTexture, useAnimations } from '@react-three/drei'
 import * as THREE from 'three'
+import { ExtendedSRGBColorSpace } from 'three/examples/jsm/math/ColorSpaces.js'
 
 export const Dog = () => {
 
@@ -24,21 +25,30 @@ export const Dog = () => {
   },[actions])
 
   // normal map and matcap apply on model
-  const [normalMap, sampleMatCap] = useTexture(["/dog_normals.jpg", "/matcap/mat-2.png"]).map((texture)=>{
+  const [normalMap, sampleMatCap, branchMap, branchNormalMap ] = useTexture(["/dog_normals.jpg", "/matcap/mat-2.png","/branches_diffuse.jpg","/branches_normals.jpg"]).map((texture)=>{
     texture.flipY = false;
     texture.colorSpace = THREE.SRGBColorSpace;
     return texture;
   });
   
+  // creating materials for dog
   const dogMaterial = new THREE.MeshMatcapMaterial({
     normalMap: normalMap,
     matcap: sampleMatCap
   });
   
+  // creating materials for branches
+  const branchMaterial = new THREE.MeshMatcapMaterial({
+    normalMap: branchNormalMap,
+    map: branchMap
+  });
+
   // hamare pass dog wale model main 108 objects,aur traverse har object ke liye ek baar chalega
   model.scene.traverse((child) => {
     if (child.name.includes("DOG")) {
       child.material = dogMaterial;
+    }else{
+      child.material = branchMaterial;
     }
   })
 
