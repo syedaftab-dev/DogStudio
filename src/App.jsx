@@ -54,6 +54,20 @@ function App() {
             </div>
             <div className='right'></div>
           </div>
+          {/* same as above */}
+          <div className='bottom'>
+            <div className='left'></div>
+            <div className='right'>
+              <p>
+                Dogstudio is a multidisciplinary <br />
+                creative studio at the intersection <br />
+                of art, design and technology.
+              </p>
+            </div>
+          </div>
+          {/* left red line */}
+          <div className='first-line'></div>
+          <div className='second-line'></div>
         </section>
         <section id='section-2'></section>
         <section id='section-3'></section>
