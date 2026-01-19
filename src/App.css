@@ -17,6 +17,21 @@ section{
  z-index: 1;
 }
 
+/* we remove background from canvas added thorough this to change background on hover over text */
+#canvas-elem::after{
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  background-image: url(/background-m.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  transition: all 0.3s linear;
+}
+
 main{
   position: relative;
 }
@@ -85,7 +100,7 @@ main{
     .first-line{
       width: 35rem;
       height: 1px;
-      background-color: rgba(255,0,0,0.396);
+      background-color: rgba(255,0,0,0.596);
       position: absolute;
       transform: rotate(45deg) translate(0,-17rem);
     }
@@ -93,10 +108,96 @@ main{
     .second-line{
       width: 10rem;
       height: 1px;
-      background-color: rgba(255,0,0,0.396);
+      background-color: rgba(255,0,0,0.596);
       position: absolute;
       transform: rotate(135deg);
       top: 28%;
       right: 12%;
     }
+}
+
+#section-2{
+  .titles{
+    display: flex;
+    flex-direction: column;
+    padding-left: 17rem ; /*padding horizontal*/
+    padding-block: 10rem;
+    .title{
+      display: flex;
+      gap: 4rem;
+      opacity: 0.3;
+      padding-block: 2rem;
+      transition: all 0.3s linear;
+      cursor: pointer;
+    
+
+      h1{
+        font-size: 4.5rem;
+        font-weight: 100;
+        line-height: 1;
+      }
+      small{
+        margin-top: 0.6rem;
+        font-size: 0.7rem;
+      }
+    }
+    .title:hover{
+      opacity: 1;
+    }
+  }
+}
+
+/* will change the background on hover  */
+/* if main element has #section-2 with title element par hover then do #canavs-elem::after ki opacity: 0 kardo
+*/
+main:has(#section-2 .title:hover) #canvas-elem::after{
+  opacity: 0;
+}
+
+.images{
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+
+  img{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    transition: all 0.3s linear;
+  }
+}
+
+main:has(#section-2 .title[img-title="tomorrowland"]:hover) #tomorrowland{
+  opacity: 1;
+  background-color: rgb(4,7,24);
+}
+main:has(#section-2 .title[img-title="navy-pier"]:hover) #navy-pier{
+  opacity: 1;
+  background-color: rgb(4,7,24);
+}
+main:has(#section-2 .title[img-title="msi-chicago"]:hover) #msi-chicago{
+  opacity: 1;
+  background-color: rgb(4,7,24);
+}
+main:has(#section-2 .title[img-title="phone"]:hover) #phone{
+  opacity: 1;
+  background-color: rgb(4,7,24);
+}
+main:has(#section-2 .title[img-title="kikk"]:hover) #kikk{
+  opacity: 1;
+  background-color: rgb(4,7,24);
+}
+main:has(#section-2 .title[img-title="kennedy"]:hover) #kennedy{
+  opacity: 1;
+  background-color: rgb(4,7,24);
+}
+main:has(#section-2 .title[img-title="opera"]:hover) #opera{
+  opacity: 1;
+  background-color: rgb(176,4,4);
 }
