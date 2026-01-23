@@ -143,7 +143,7 @@ export const Dog = () => {
     const tl = gsap.timeline({
       scrollTrigger: {
       trigger: "#section-1",
-      endTrigger: "#section-3",
+      endTrigger: "#section-4",
       start: "top top",
       end: "bottom bottom",
       markers: true,
@@ -166,7 +166,7 @@ export const Dog = () => {
     },"third") 
     .to(dogModel.current.scene.position,{
       x: "-=0.6",
-      z: "+=0.63",
+      z: "+=0.5",
       y: "-=0.01"
     },"third")
     // third is a tag will both animations works sath main
